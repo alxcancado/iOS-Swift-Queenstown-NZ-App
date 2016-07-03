@@ -10,12 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var bgPhoto: UIImageView!
     @IBOutlet weak var moreButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let randomPhoto = Int(arc4random_uniform(UInt32(12)))
+        
+        
         moreButton.layer.cornerRadius = 2.0
+        
+        
         
     }
 
