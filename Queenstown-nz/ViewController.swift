@@ -16,18 +16,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // We have here 12 photos and want to select one
         let randomPhoto = Int(arc4random_uniform(UInt32(12)))
+        bgPhoto.image = UIImage(named: "qt\(randomPhoto).png")
+
         
         
-        moreButton.layer.cornerRadius = 2.0
+        //print(randomPhoto)
+        moreButton.layer.cornerRadius = 4.0
         
+        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(ViewController.randomPhotos(_:)), userInfo: nil, repeats: true)
+
         
-        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool){
+        let randomPhoto = Int(arc4random_uniform(UInt32(12)))
+        bgPhoto.image = UIImage(named: "qt\(randomPhoto).png")
+    }
+    
+    func randomPhotos(timer:NSTimer){
+        let randomPhoto = Int(arc4random_uniform(UInt32(12)))
+        bgPhoto.image = UIImage(named: "qt\(randomPhoto).png")
+
     }
 
 
